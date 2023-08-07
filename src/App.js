@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import Profile from "./Profile";
-
+import Bond from "./pages/Bond";
 // import BondDetails from "./pages/BondDetails";
 import BondDetails from "./pages/BondDetails";
 import Dashboard from "./pages/Dashboard";
@@ -12,15 +12,16 @@ import Dashboard from "./pages/Dashboard";
 function App() {
   return (
     <>
-      {/* <div className="App">
+      <div className="App">
         <LoginButton />
         <br />
         <LogoutButton />
         <br />
         <Profile />
-      </div> */}
+      </div>
 
       <Routes>
+        <Route exact path="/" element={<Bond />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route path="/bonds/:bondId" element={<BondDetails />} />
       </Routes>
