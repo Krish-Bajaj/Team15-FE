@@ -1,13 +1,20 @@
-// import Metrics from "../components/Metrics"
-import List from "../components/List"
+import Metrics from "../components/Metrics";
+import List from "../components/List";
+import "../styles/Dashboard.css";
 
 const Dashboard = () => {
   return (
-    <div>
-        {/* <Metrics /> */}
-        <List />
+    <div className="sketchy" style={{ display: "flex", margin: "5rem" }}>
+      <Metrics />
+      <div
+        style={{
+          borderLeft: "2px solid black",
+          margin: "0 5rem",
+        }}
+      />
+      <List />
     </div>
   );
-}
+};
 
-export default Dashboard
+export default Dashboard;
