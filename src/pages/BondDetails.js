@@ -1,8 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import BondsNames from "./BondsNames";
+// import BondsNames from "./BondsNames";
+import BondsNames from "../pages/BondsNames";
+
 import { Link } from "react-router-dom";
-import "./Bonddetails.css";
+// import "./Bonddetails.css";
 import "../styles/Bonddetails.css";
 // import "../styles/";
 const BondDetails = () => {
