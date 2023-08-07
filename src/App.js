@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Link, Route, Routes } from "react-router-dom";
-import BondDetails from "./components/Bonds/BondDetails";
+import { Route, Routes } from "react-router-dom";
+
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import Profile from './Profile';
-import Bond from './components/Bonds/Bond';
+
+import BondDetails from "./pages/BondDetails";
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         </div>
 
       <Routes>
-        <Route exact path="/bond" element={<Bond />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
         <Route path="/bonds/:bondId" element={<BondDetails />} />
       </Routes>
     </>

@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import BondsNames from "./BondsNames";
+import { getBonds } from "../api";
 import { Link } from "react-router-dom";
 const BondDetails = () => {
-  const bonds = BondsNames();
+  const bonds = getBonds();
 
   const { bondId } = useParams();
   const bond = bonds.find((p) => p.id === parseInt(bondId));
@@ -16,7 +16,7 @@ const BondDetails = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/"> Show All Bonds </Link>
+              <Link to="/dashboard"> Show All Bonds </Link>
             </li>
           </ul>
         </nav>
@@ -29,26 +29,6 @@ const BondDetails = () => {
       </div>
     </>
   );
-  //   return (
-  //     <div>
-  //       {/* <h2>{bond.name}</h2>
-  //       <p>{bond.description}</p>
-  //       <p>Price: ${bond.price}</p> */}
-  //       <p> `Bond is {bond}`</p>
-  //       <p>THis it the Bond Details Page </p>
-  //     </div>
-  //   );
 };
-
-// const BondDetails = () => {
-//   const { bondId } = useParams();
-
-//   return (
-//     <div>
-//       <p> `Bond id is {bondId}`</p>
-//       <p>THis it the Bond Details Page </p>
-//     </div>
-//   );
-// };
 
 export default BondDetails;
