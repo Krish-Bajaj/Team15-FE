@@ -12,13 +12,13 @@ import Dashboard from "./pages/Dashboard";
 function App() {
   return (
     <>
-      <div className="App">
+      {/* <div className="App">
         <LoginButton />
         <br />
         <LogoutButton />
         <br />
         <Profile />
-      </div>
+      </div> */}
 
       <Routes>
         <Route exact path="/dashboard" element={<Dashboard />} />
