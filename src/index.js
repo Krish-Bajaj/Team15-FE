@@ -11,7 +11,8 @@ root.render(
     domain="dev-lxe5tr51b6l2yaeh.au.auth0.com"
     clientId="YRNeeC7OaT00TL5s1C6nAbasDmW7RJVq"
     authorizationParams={{
-      redirect_uri: window.location.origin
+      // redirect_uri: window.location.origin
+      redirect_uri : "http://localhost:3000/dashboard"
     }}
   >
     <BrowserRouter>
