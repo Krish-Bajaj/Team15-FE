@@ -4,6 +4,7 @@ const userModel = require("./models/book");
 const bookArray = require("./bookArray");
 const Book = require("./models/book");
 const Bond = require("./models/bond");
+const cors = require('cors')
 // const myDB = client.db("hackathon");
 // const coll = myDB.collection("Book");
 
@@ -18,6 +19,7 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+app.use(cors());
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
@@ -36,12 +38,9 @@ const importData = async () => {
 };
 
 // importData();
-
 app.get("/", async (req, res) => {
-  Bond.find({}).then((bonds) => {
-    res.status(201).json(bonds);
-    console.log(bonds);
-  });
+  const result = await Bond.find({});
+  res.status(200).json(result);
 });
 
 app.post("/createBook", async (req, res) => {
@@ -72,6 +71,6 @@ app.post("/createBond", async (req, res) => {
   }).then((bond) => res.status(200).json(bond));
 });
 
-app.listen(3000, () => {
-  console.log("Server is running at port 3000");
+app.listen(8000, () => {
+  console.log("Server is running at port 8000");
 });
