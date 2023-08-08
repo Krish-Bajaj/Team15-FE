@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-// import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import LoginPage from './pages/LoginPage';
 import LogoutButton from './LogoutButton';
@@ -10,7 +10,7 @@ import BondDetails from "./pages/BondDetails";
 import Dashboard from './pages/Dashboard';
 
 function App() {
-  // const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
   return (
     <>
@@ -25,10 +25,6 @@ function App() {
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route path="/bonds/:bondId" element={<BondDetails />} />
       </Routes>
-      <div className="App">
-          <LogoutButton/>
-          <br />
-      </div>
     </>
     
   );
