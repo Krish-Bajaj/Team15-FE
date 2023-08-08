@@ -5,25 +5,25 @@ import axios from "axios";
 
 import LoginPage from "./pages/LoginPage";
 import Profile from "./Profile";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import BondDetails from "./pages/BondDetails";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
-
+  const { IndividualBonds, setIndividualBonds } = useState(null);
   useEffect(() => {
     axios
       .get("http://localhost:8000/")
       .then((response) => {
         console.log(response.data);
+        setIndividualBonds(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
-
   return (
     <>
       <div className="App">
@@ -37,7 +37,10 @@ function App() {
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<Dashboard />} />
         <Route path="/bonds/:bondId" element={<BondDetails />} />
+        <Route path="/bond" element={IndividualBonds} />
       </Routes>
+
+      {/* {IndividualBonds} */}
     </>
   );
 }
