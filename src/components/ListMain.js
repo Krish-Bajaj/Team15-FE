@@ -1,45 +1,57 @@
 import { Button } from "@mui/material";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const ListMain = () => {
-    return (
-        <div className='list' >
+  const [tp, setTp] = useState({});
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/")
+      .then((response) => {
+        // console.log(response.data);
+        // tp = response.data;
+        setTp(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-            <div className="near">
-                <h4>Near Maturity Bonds</h4>
-                <Button variant="outlined"  >HUL bond</Button>
-                <br/>
-                <Button variant="outlined" className="btn-space">Himalaya bond</Button>
-                <br/>
-                <Button variant="outlined" className="btn-space">Axis bond</Button>
-                 <br/>
-                <Button variant="outlined" className="btn-space">DB bond</Button>
-            </div>
+  //   console.log(tp);
 
-            <div className="mature" style={{ marginTop: '2rem' }}>
-                <h4>Matured Bonds</h4>
-                <Button variant="outlined" className="btn-space">HUL bond</Button>
-                <br />
+  return (
+    <div className="list">
+      <div className="near">
+        <h4>Near Maturity Bonds</h4>
 
-                <Button variant="outlined" className="btn-space">Himalaya bond</Button>
-                <br/>
-                <Button variant="outlined" className="btn-space">Axis bond</Button>
-                 <br/>
-                <Button variant="outlined" className="btn-space">DB bond</Button>
-            </div>
+        {tp.Near_matured?.map((bond) => (
+          <Button variant="outlined" className="btn-space">
+            <h3>{bond.issuer}</h3>
+          </Button>
+        ))}
+      </div>
 
-            <div className="not_matured" style={{ marginTop: '2rem' }}>
-                <h4>Non Matured Bonds</h4>
-                <Button variant="outlined"className="btn-space">HUL bond</Button>
-                <br/>
-                <Button variant="outlined" className="btn-space">Himalaya bond</Button>
-                <br />
+      <div className="mature" style={{ marginTop: "2rem" }}>
+        <h4>Matured Bonds</h4>
 
-                <Button variant="outlined" className="btn-space">Axis bond</Button>
-                 <br/>
-                <Button variant="outlined" className="btn-space">DB bond</Button>
-            </div>
-        </div>
-    )
-}
+        {tp.Matured?.map((bond) => (
+          <Button variant="outlined" className="btn-space">
+            <h3>{bond.issuer}</h3>
+          </Button>
+        ))}
+      </div>
 
-export default ListMain
+      <div className="not_matured" style={{ marginTop: "2rem" }}>
+        <h4>Non Matured Bonds</h4>
+
+        {tp.Not_matured?.map((bond) => (
+          <Button variant="outlined" className="btn-space">
+            <h3>{bond.issuer}</h3>
+          </Button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ListMain;

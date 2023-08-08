@@ -4,7 +4,8 @@ const userModel = require("./models/book");
 const bookArray = require("./bookArray");
 const Book = require("./models/book");
 const Bond = require("./models/bond");
-const cors = require('cors')
+const cors = require("cors");
+
 // const myDB = client.db("hackathon");
 // const coll = myDB.collection("Book");
 
@@ -36,12 +37,52 @@ const importData = async () => {
     console.log(e.message);
   }
 };
-
+let matured_arr = [];
+let near_matured_arr = [];
+let not_matured_arr = [];
+let obj = {};
+let a = 0,
+  b = 0,
+  c = 0;
 // importData();
 app.get("/", async (req, res) => {
   const result = await Bond.find({});
-  res.status(200).json(result);
+  console.log(result);
+  // res.status(200).json(result);
+
+  result.forEach((ele) => {
+    const currentDate = new Date();
+    const maturityDateObj = ele.maturitydate;
+    const timeDiff = currentDate - maturityDateObj;
+    const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+    if (daysRemaining > 0 && a < 5) {
+      matured_arr.push(ele);
+      a++;
+    } else {
+      if (-daysRemaining > 180 && b < 5) {
+        not_matured_arr.push(ele);
+        b++;
+      } else if (c < 5) {
+        near_matured_arr.push(ele);
+        c++;
+      }
+    }
+  });
+
+  obj["Matured"] = matured_arr;
+  obj["Near_matured"] = near_matured_arr;
+  obj["Not_matured"] = not_matured_arr;
+
+  res.status(201).json(obj);
+  console.log(matured_arr);
 });
+
+// app.get("/getBonds/:id", async (req, res) => {
+//   // console.log(req.params.id);
+//   const list = await Bond.find({ _id: req.params.id });
+//   console.log(list);
+// });
 
 app.post("/createBook", async (req, res) => {
   const bookId = req.body.bookId;
