@@ -11,15 +11,14 @@ import Dashboard from './pages/Dashboard';
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  
+
   return (
     <>
         <div className="App">
           <LoginPage/>
           <br/>
-          <LogoutButton/>
-          <br />
-          <Profile/>
+          
+          {isAuthenticated ? <></> : <Profile/>}
         </div>
 
       <Routes>
@@ -27,6 +26,7 @@ function App() {
         <Route path="/bonds/:bondId" element={<BondDetails />} />
       </Routes>
     </>
+    
   );
 }
 

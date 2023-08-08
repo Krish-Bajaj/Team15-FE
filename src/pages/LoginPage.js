@@ -4,15 +4,17 @@ import "../styles/LoginPage.css";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   return (
     !isAuthenticated && (
       //   <button onClick={() => loginWithRedirect()}>Log In</button>
       <div class="container">
+        <br/>
+        <br/>
         <div class="login">
           <div class="container">
             <i class="fa fa-users extra-large-user-icon" aria-hidden="true"></i>
-            <h1>James Bond Securities</h1>
+            <h1>Bond's J Security</h1>
 
             <button onClick={() => loginWithRedirect()}>Log In</button>
             <ul>
@@ -38,7 +40,7 @@ const LoginButton = () => {
               class="fa fa-line-chart extra-large-chart-icon"
               aria-hidden="true"
             ></i>
-            <h2>Hello , Investor!</h2>
+            <h2>Hello, Investor!</h2>
             <p>
               SignIn to view your Dashboard, Charts, Metrics and many more.....
             </p>
