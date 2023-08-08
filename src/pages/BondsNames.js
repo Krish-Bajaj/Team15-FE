@@ -4,8 +4,8 @@ function BondsNames() {
   const products = [
     {
       id: 1,
-      name: "Bond 1",
-      description: "This is Bond 1",
+      name: "Deutsche Bank Bond",
+      description: "This is Deutsche Bank",
       price: 19.99,
       issuer: "XYZ Corporation",
       issueDate: "2023-08-07",

@@ -11,29 +11,55 @@ const BondDetails = () => {
   const bonds = BondsNames();
   const { bondId } = useParams();
   const bond = bonds.find((p) => p.id === parseInt(bondId));
-  console.log("in the details");
-  console.log(bond);
-  console.log(bond.description, bond.name);
+  const linkStyle = {
+    textDecoration: "none", // Remove underline
+    color: "#333", // Custom text color
+    // Add other custom styles as needed
+    backgroundColor: "#f9f9f9",
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    padding: "20px",
+    margin: "20px",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  };
   return (
     <>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/"> Show All Bonds </Link>
-            </li>
-          </ul>
-        </nav>
+        <Link to="/" style={linkStyle}>
+          Show All Bonds{" "}
+        </Link>
       </div>
-      <div className="bond-container">
-        {/* <p>`Bond id is {bondId} `</p> */}
-        <h2 className="bond-title"> {bond.name} Bond Details</h2>
-        <p className="bond-info">Bond Name: {bond.bondName}</p>
+      {/* <div className="bond-container">
+       
+        <h2 className="bond-title"> {bond.name} </h2>
         <p className="bond-info">Bond Price : {bond.price}</p>
         <p className="bond-info">Issuer: {bond.issuer}</p>
         <p className="bond-info">Issue Date: {bond.issueDate}</p>
         <p className="bond-info">Face Value: {bond.faceValue}</p>
         <p className="bond-info">Description : {bond.description}</p>
+      </div> */}
+
+      <div className="bond-attributes">
+        <div className="bond-attribute">
+          <span className="attribute-label">Bond Name:</span>
+          <span className="attribute-value"> {bond.name} </span>
+        </div>
+        <div className="bond-attribute">
+          <span className="attribute-label">Issuer:</span>
+          <span className="attribute-value"> {bond.issuer} </span>
+        </div>
+        <div className="bond-attribute">
+          <span className="attribute-label">Issue Date:</span>
+          <span className="attribute-value"> {bond.issueDate} </span>
+        </div>
+        <div className="bond-attribute">
+          <span className="attribute-label">Face Value:</span>
+          <span className="attribute-value"> {bond.faceValue} </span>
+        </div>
+        <div className="bond-attribute">
+          <span className="attribute-label">Description:</span>
+          <span className="attribute-value"> {bond.description} </span>
+        </div>
       </div>
     </>
   );

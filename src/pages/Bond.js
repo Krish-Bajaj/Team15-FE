@@ -15,12 +15,10 @@ const Bond = () => {
   return (
     <div>
       {bonds.map((bond) => (
-        <div key={bond.id} onClick={() => handleBondClick(bond)}>
-          <Link to={`/bonds/${bond.id}`}> View Details </Link>
-          <p>This is the {bond.id} Bond </p>
+        <div  key={bond.id} onClick={() => handleBondClick(bond)}>
+          <Link to={`/bonds/${bond.id}`}> {bond.name} </Link>
         </div>
       ))}
-
       {selectedBond && <BondDetails bond={selectedBond} />}
     </div>
   );

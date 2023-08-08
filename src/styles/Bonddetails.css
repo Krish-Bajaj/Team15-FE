@@ -1,10 +1,26 @@
 /* Bonddetails.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.show-all-container {
+  color: #2196F3;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  border-radius: 20%;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 .bond-container {
-    border: 1px solid #ccc;
+  /* border-color: red; */
+    /* border: 1px solid #ccc; */
     padding: 20px;
     margin: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     width: 50%;
     display: flex;
     justify-content: center;
@@ -14,15 +30,81 @@
   }
   
   .bond-title {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 50px;
+    /* margin-bottom: 10px; */
+    display: flex;
+    /* justify-content: ; */
+    margin-left: -50%;
+    color: rgb(60, 17, 61);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  
+    /* Hover effect */
+    &:hover {
+      background-color: #eaeaea;
+      color: #333;
+      transform: translateY(-2px);
+    }
   }
   
-  .bond-info {
-    font-size: 16px;
+  /* .bond-info {
+    font-size: 25px;
     margin: 5px 0;
-    color: darkblue;
+    color: rgb(88, 9, 83);
+  } */
+
+  .bond-info {
+    font-size: 18px;
+    margin: 8px 0;
+  color: #3F51B5;
+    border-radius: 10%;
+    /* color: #555; */
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  
+    /* Hover effect */
+    &:hover {
+      background-color: #eaeaea;
+      color: #333;
+      transform: translateY(-2px);
+    }
   }
-  
-  /* Feel free to customize the styles further */
-  
+
+
+
+  /* BondAttributes.css */
+
+.bond-attributes {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  /* margin: 20px; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  /* justify-content: center; */
+  margin: auto;
+}
+
+.bond-attribute {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.attribute-label {
+  font-weight: bold;
+  color: #333;
+  margin-right: 10px;
+}
+
+.attribute-value {
+  font-size: 16px;
+  color: #555;
+}
