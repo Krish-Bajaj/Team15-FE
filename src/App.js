@@ -17,16 +17,20 @@ function App() {
         <div className="App">
           <LoginPage/>
           <br/>
-          <LogoutButton/>
-          <br />
-          <Profile/>
+          
+          {isAuthenticated ? <></> : <Profile/>}
         </div>
 
       <Routes>
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route path="/bonds/:bondId" element={<BondDetails />} />
       </Routes>
+      <div className="App">
+          <LogoutButton/>
+          <br />
+      </div>
     </>
+    
   );
 }
 
