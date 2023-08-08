@@ -1,5 +1,5 @@
 import Metrics from "../components/Metrics";
-import List from "../components/List";
+import List from "../components/ListMain";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {
