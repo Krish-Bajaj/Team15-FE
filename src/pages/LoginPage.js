@@ -4,7 +4,7 @@ import "../styles/LoginPage.css";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   return (
     !isAuthenticated && (
       //   <button onClick={() => loginWithRedirect()}>Log In</button>
