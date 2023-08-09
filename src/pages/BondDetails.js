@@ -5,15 +5,16 @@ import "../styles/BondDetails.css";
 import Navbar from "../components/Navbar";
 
 function BondDetails() {
-  const [bond, setBond] = useState({})
+  const [bond, setBond] = useState({});
 
   useEffect(() => {
-    const bondId = window.location.href.split('/')[4] || '64d23b95150c2f5e8a7457cc'
+    const bondId =
+      window.location.href.split("/")[4] || "64d23b95150c2f5e8a7457cc";
     axios
       .get(`http://localhost:8000/getBonds/${bondId}`)
       .then((response) => {
-        console.log('$$', response.data);
-        setBond(response.data)
+        console.log("$$", response.data);
+        setBond(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -34,38 +35,39 @@ function BondDetails() {
   return (
     <>
       <Navbar />
-      <div style={{ marginTop: '6rem' }}>
+      <div style={{ marginTop: "6rem" }}>
         <Link to="/" style={linkStyle}>
           Show All Bonds{" "}
         </Link>
       </div>
+      <div className="boxcontainer ">
+        <div className="bond-attributes element-with-box-shadow">
+          <div className="bond-attribute">
+            <span className="attribute-label">Issuer:</span>
+            <span className="attribute-value"> {bond.issuer} </span>
+          </div>
+          <div className="bond-attribute">
+            <span className="attribute-label">Type:</span>
+            <span className="attribute-value"> {bond.type} </span>
+          </div>
+          <div className="bond-attribute">
+            <span className="attribute-label">Maturity Date:</span>
+            <span className="attribute-value"> {bond.maturitydate} </span>
+          </div>
+          <div className="bond-attribute">
+            <span className="attribute-label">Interest Rate:</span>
+            <span className="attribute-value"> {bond.interestrate} </span>
+          </div>
 
-      <div className="bond-attributes">
-        <div className="bond-attribute">
-          <span className="attribute-label">Issuer:</span>
-          <span className="attribute-value"> {bond.issuer} </span>
-        </div>
-        <div className="bond-attribute">
-          <span className="attribute-label">Type:</span>
-          <span className="attribute-value"> {bond.type} </span>
-        </div>
-        <div className="bond-attribute">
-          <span className="attribute-label">Maturity Date:</span>
-          <span className="attribute-value"> {bond.maturitydate} </span>
-        </div>
-        <div className="bond-attribute">
-          <span className="attribute-label">Interest Rate:</span>
-          <span className="attribute-value"> {bond.interestrate} </span>
-        </div>
+          <div className="bond-attribute">
+            <span className="attribute-label">Face Value:</span>
+            <span className="attribute-value"> {bond.facevalue} </span>
+          </div>
 
-        <div className="bond-attribute">
-          <span className="attribute-label">Face Value:</span>
-          <span className="attribute-value"> {bond.facevalue} </span>
-        </div>
-
-        <div className="bond-attribute">
-          <span className="attribute-label">Tenure:</span>
-          <span className="attribute-value"> {bond.tenure} </span>
+          <div className="bond-attribute">
+            <span className="attribute-label">Tenure:</span>
+            <span className="attribute-value"> {bond.tenure} </span>
+          </div>
         </div>
       </div>
     </>
