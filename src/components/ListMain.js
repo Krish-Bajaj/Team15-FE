@@ -24,6 +24,8 @@ const ListMain = () => {
   const handleBondClick = (bond) => {
     setSelectedBond(bond);
     setIsBondClicked(true);
+    // updateSelectedBond(bond);
+    console.log({ bond });
   };
 
   return (
@@ -34,32 +36,42 @@ const ListMain = () => {
           //   <Button variant="outlined" className="btn-space">
           //     <h3>{bond.issuer}</h3>
           //   </Button>
-          <div key={bond.id} onClick={() => handleBondClick(bond)}>
-            <Link to={`/bonds/${bond.id}`}> {bond.issuer} </Link>
+          <div key={bond._id} onClick={() => handleBondClick(bond)}>
+            <Link to={`/bonds/${bond._id}`}> {bond.issuer} </Link>
             {/* <p>This is the {bond.id} Bond </p> */}
           </div>
         ))}
-        {isBondClicked && <BondDetails selectedBond={selectedBond} />}
+        {/* {isBondClicked && <BondDetails props={selectedBond} />} */}
       </div>
 
       <div className="mature" style={{ marginTop: "2rem" }}>
         <h4>Matured Bonds</h4>
 
         {tp.Matured?.map((bond) => (
-          <Button variant="outlined" className="btn-space">
-            <h3>{bond.issuer}</h3>
-          </Button>
+          //   <Button variant="outlined" className="btn-space">
+          //     <h3>{bond.issuer}</h3>
+          //   </Button>
+          <div key={bond._id} onClick={() => handleBondClick(bond)}>
+            <Link to={`/bonds/${bond._id}`}> {bond.issuer} </Link>
+            {/* <p>This is the {bond.id} Bond </p> */}
+          </div>
         ))}
+        {/* {isBondClicked && <BondDetails props={selectedBond} />} */}
       </div>
 
       <div className="not_matured" style={{ marginTop: "2rem" }}>
         <h4>Non Matured Bonds</h4>
 
         {tp.Not_matured?.map((bond) => (
-          <Button variant="outlined" className="btn-space">
-            <h3>{bond.issuer}</h3>
-          </Button>
+          //   <Button variant="outlined" className="btn-space">
+          //     <h3>{bond.issuer}</h3>
+          //   </Button>
+          <div key={bond._id} onClick={() => handleBondClick(bond)}>
+            <Link to={`/bonds/${bond._id}`}> {bond.issuer} </Link>
+            {/* <p>This is the {bond.id} Bond </p> */}
+          </div>
         ))}
+        {/* {isBondClicked && <BondDetails props={selectedBond} />} */}
       </div>
     </div>
   );

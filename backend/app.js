@@ -75,14 +75,14 @@ app.get("/", async (req, res) => {
   obj["Not_matured"] = not_matured_arr;
 
   res.status(201).json(obj);
-  console.log(matured_arr);
+  console.log("success");
 });
 
-// app.get("/getBonds/:id", async (req, res) => {
-//   // console.log(req.params.id);
-//   const list = await Bond.find({ _id: req.params.id });
-//   console.log(list);
-// });
+app.get("/getBonds/:id", async (req, res) => {
+  // console.log(req.params.id);
+  const list = await Bond.find({ _id: req.params.id });
+  res.status(200).json(list[0])
+});
 
 app.post("/createBook", async (req, res) => {
   const bookId = req.body.bookId;
