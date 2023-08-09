@@ -47,7 +47,7 @@ const ListMain = () => {
         ))}
       </div>
     </div>
-  );
+  )
 };
 
 export default ListMain;

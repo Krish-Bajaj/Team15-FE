@@ -2,7 +2,6 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-import ListMain from "./components/ListMain";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./Profile";
 import { useEffect, useState } from "react";

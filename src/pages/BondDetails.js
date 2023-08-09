@@ -3,8 +3,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "../styles/BondDetails.css";
 import Navbar from "../components/Navbar";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function BondDetails() {
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const [bond, setBond] = useState({})
 
   useEffect(() => {
@@ -31,7 +33,7 @@ function BondDetails() {
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
   };
 
-  return (
+  return isAuthenticated ? (
     <>
       <Navbar />
       <div style={{ marginTop: '6rem' }}>
@@ -69,7 +71,7 @@ function BondDetails() {
         </div>
       </div>
     </>
-  );
+  ) : null;
 }
 
 export default BondDetails;
